@@ -1,0 +1,95 @@
+
+<div id="z_announcment">
+  <div class="z_announcment_bg">
+    <div class="z_announcment_flex">
+      {% if section.settings.icon_logo != blank %}
+        <img src="{{ section.settings.icon_logo | img_url : 'master' }}"   class="z_icon_logo"/>
+        {% endif %}
+        {% if section.settings.faq_text != blank %}
+        <p class="z__announcment_text">
+          {{ section.settings.faq_text }}
+        </p>
+          {% endif %}
+    </div>
+  </div>
+</div>
+
+<style>
+  .z_announcment_flex {
+    display: flex;
+    align-items: center;
+    justify-content:center;
+  }
+  .z_announcment_bg {
+    background-color : {{section.settings.section_bg_color}};
+    padding:10px 0 ;
+  }
+  .z__announcment_text {
+    color:{{section.settings.text_head_color}};
+    font-family : var(--FS_Emeric_medium);
+    font-size:16px;
+    display: flex;
+    align-items: center;
+    line-height: normal;
+  }
+  img.z_icon_logo {
+    margin-right:10px;
+}
+  @media (max-width:768px)
+  {
+    .z__announcment_text 
+    { 
+font-size:12px;
+    }
+      img.z_icon_logo {
+    margin-right:5px;
+        height:15px;
+        width:15px;
+}
+    .z_announcment_bg {
+    padding: 5px 0;
+}
+  }
+</style>
+{% schema %}
+  {
+    "name": "Announcment bar",
+    "settings": [
+      {
+"type": "color",
+"id": "section_bg_color",
+"label": "section_bg_color",
+"default": "#000"
+},
+      {
+"type":"text",
+"id":"faq_text",
+"label":"Text",
+"default":"Free UK Mainland Delivery on Orders Over £65"  
+},
+{
+"type": "color",
+"id": "text_head_color",
+"label": "Text color",
+"default": "#fff"
+},
+          {
+    "type": "image_picker",
+    "id": "icon_logo",
+    "label": "Logo"
+    }
+    ],
+    "presets" : [
+{
+"name" : "Announcment bar",
+"category" : "office work"
+}
+]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

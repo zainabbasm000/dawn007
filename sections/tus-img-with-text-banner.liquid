@@ -1,0 +1,285 @@
+<div class="ab_tus_big_img_text">
+{% if section.settings.sec_bg_img != blank %}
+<img class="ab_tus_sec_bg_img" src="{{ section.settings.sec_bg_img | img_url:'master' }}" loading="lazy" >  
+{% endif %}    
+
+{% if section.settings.sec_bg_img != blank %}
+<img class="tus_sec_img_mob" src="{{ section.settings.sec_bg_img_mob | img_url:'master' }}" loading="lazy">  
+{% endif %} 
+
+<div class="ab_tus_main_imgs_txt_sec">
+<div class="ab_tus_parent_text_part">
+{% if section.settings.sec_heading  != blank %}
+<div class="ab_tus_sec_head"> {{ section.settings.sec_heading }} </div>
+{% endif %}
+{% if section.settings.sec_content != blank %}
+<p class="ab_tus_content"> {{ section.settings.sec_content }} </p>
+{% endif %}
+
+<div class="ab_tus_logos_parent">
+{% assign count = 0 %}
+{% for block in section.blocks %}
+{% assign count = count | plus: 1 %}
+{% if block.type == "tus_sec_logo" %}
+<div class="ab_tus_logo_child{{ count }}">
+{% if block.settings.logo_img_block != blank %}
+<a href="{{ block.settings.logo_link }}">
+<img style="width:{{ block.settings.logo_width }}px ; height:{{ block.settings.logo_width }}px ;"
+src="{{ block.settings.logo_img_block | img_url:'master' }}" loading="lazy">
+</a>
+{% endif %}
+</div>
+{% endif %}
+{% endfor %}
+</div>
+
+</div>
+</div>
+</div>
+
+
+
+<style>
+
+.ab_tus_big_img_text {
+position:relative;
+padding:0px 0;  
+background-color: rgba(250, 247, 240, 0.5);  
+}
+.tus_sec_img_mob{
+display:none;
+height: 100%; 
+width:100%;  
+}
+.ab_tus_sec_bg_img {
+width:100%;
+display:block;
+height: 100%;  
+min-height: 255px; 
+object-fit: cover;  
+}
+.ab_tus_parent_text_part {
+position:absolute;
+top:50%;
+left:50%;
+transform:translate(-50%, -50%);
+width:100%;
+max-width:600px;
+margin:0 auto;
+border-radius:10px;
+padding:10px 0;
+text-align:center;
+background-color:{{ section.settings.sec_cont_bg }};
+} 
+.ab_tus_sec_head {
+margin:0;
+line-height: 1;
+font-family: var(--FS_Emeric_regular);
+font-size:18px;
+text-transform:uppercase;
+color:{{ section.settings.sec_text_color }};  
+} 
+.ab_tus_sec_head p{
+margin:0;
+line-height: 1;
+font-family: var(--FS_Emeric_regular);
+font-size:18px;
+text-transform:uppercase;
+color:{{ section.settings.sec_text_color }}; 
+}
+.ab_tus_sec_head strong{
+font-size: 19px;  
+font-family: var(--FS_Emeric_extra_bold);  
+}
+.ab_tus_parent_text_part .ab_tus_content {
+margin: 20px auto 10px auto;
+max-width: 515px;
+line-height: normal;
+font-family: var(--FS_Emeric_regular);
+font-size: 15px;
+color:{{ section.settings.sec_text_color }}; 
+}
+.ab_tus_logos_parent{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+align-items: center;  
+max-width: 230px;
+margin: 0 auto;  
+  padding-top:5px;
+}  
+{% assign count = 0 %}
+{% for block in section.blocks %}
+{% assign count = count | plus: 1 %}
+{% if block.type == "tus_sec_logo" %}
+.ab_tus_logo_child{{ count }} {
+width:33.33%;
+}
+.ab_tus_logo_child{{ count }} img{
+display:block;
+object-fit: contain; 
+margin: 0 auto;  
+}  
+.ab_tus_logo_child{{ count }} a{
+text-decoration:none;
+display:block;
+background-color: rgba(250, 247, 240, 0.5);  
+}
+{% endif %}
+{% endfor %}
+.ab_tus_big_img_text img{
+opacity:0;
+}
+
+@media(max-width:768px){
+.tus_sec_img_mob{
+display:block;
+min-height: 270px;  
+}
+.ab_tus_sec_bg_img{
+display:none;
+}
+.ab_tus_sec_head p{
+font-size: 16px;
+}
+.ab_tus_sec_head strong {
+font-size: 17px;
+}
+.ab_tus_parent_text_part .ab_tus_content {
+margin: 10px auto 5px auto;
+font-size: 14px;
+}
+.ab_tus_parent_text_part{
+max-width: 93%;
+padding: 10px 15px 10px 15px;  
+}
+{% assign count = 0 %}
+{% for block in section.blocks %}
+{% assign count = count | plus: 1 %}
+{% if block.type == "tus_sec_logo" %}
+.ab_tus_logo_child{{ count }} img{
+width: {{ block.settings.mob_log_width }}px !important;
+height: {{ block.settings.mob_log_width }}px !important;
+object-fit: contain;  
+}
+{% endif %}
+{% endfor %}
+}
+
+</style>
+
+
+<script>
+$(document).ready(function() {
+setTimeout(function() {
+$('.ab_tus_big_img_text img').each(function() {
+// var originalSrc = $(this).attr('data-src');
+// $(this).attr('src', originalSrc);
+$('.ab_tus_big_img_text img').css("opacity","1");
+});
+}, 1000); 
+});
+
+// $(document).ready(function() {
+
+// $('.ab_tus_big_img_text img').css("opacity","0");
+
+// setTimeout(function() {
+// $('.ab_tus_big_img_text img').css("opacity","1");
+// }, 1000);
+// });
+
+
+</script>
+
+
+{% schema %}
+{
+"name": "c images text",
+"settings": [
+{
+"type":"image_picker",
+"id":"sec_bg_img",
+"label":"Background Image(desktop)"  
+},
+{
+"type":"image_picker",
+"id":"sec_bg_img_mob",
+"label":"Background Image(mobile)"  
+},  
+{
+"type":"color",
+"id":"sec_cont_bg",
+"label":"Content background color",
+"default":"#fff"  
+},
+{
+"type":"richtext",
+"id":"sec_heading",
+"label":"Heading"  
+},
+{
+"type":"textarea",
+"id":"sec_content",
+"label":"Text",
+"default":"Find your perfect piece of King’s memorabilia to make sure you take that little bit of King’s with you wherever your journey takes you "    
+},
+{
+"type":"color",
+"id":"sec_text_color",
+"label":"Text color",
+"default":"#000"  
+}  
+],
+"blocks": [
+{
+"type": "tus_sec_logo",
+"name": "Logo image",
+"settings": [
+{
+"type": "image_picker",
+"id": "logo_img_block",
+"label": "Logo image"
+},
+{
+"type": "range",
+"id": "logo_width",
+"min": 30,
+"max": 100,
+"step": 1,
+"unit": "px",
+"label": "Logo width(desktop)",
+"default": 50
+}, 
+{
+"type": "range",
+"id": "mob_log_width",
+"min": 20,
+"max": 60,
+"step": 1,
+"unit": "px",
+"label": "Logo width(mobile)",
+"default": 40
+},  
+{
+"type":"url",
+"id":"logo_link",
+"label":"Logo link"  
+}  
+]
+}  
+],   
+"presets":[
+{
+"name":"c images text",
+"category":"office work"  
+}  
+]    
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

@@ -1,0 +1,485 @@
+<style>
+  .tus_image_text_bg_{{section.id}} {
+    width: 100%;
+    background-color: {{section.settings.tus_image_text_bg}};
+  }
+  
+ .tus_image_text_bg_{{section.id}} .tus_container
+  {
+    padding:0;
+  }
+  
+  .tus_image_text_{{section.id}} {
+    width: 100%;
+    padding: {{ section.settings.z_padding_top }}px 20px {{section.settings.z_padding_bottom}}px 20px;
+  }
+
+  .tus_image_text_subheading_{{section.id}} {
+    width: 100%;
+    padding: 0px 0px 10px;
+  }
+
+  .tus_image_text_subheading_{{section.id}} p {
+    margin: 0px;
+    color: {{section.settings.tus_image_text_subheading_c}};
+    font-family: FS_Emeric_regular;
+    font-size: 18px;
+    line-height: 22px;
+    letter-spacing: 0px;
+  }
+
+  .tus_image_text_heading_{{section.id}} {
+    width: 100%;
+    padding: 0px 0px 20px;
+  }
+
+  .tus_image_text_heading_{{section.id}} h2 {
+    margin: 0px;
+    color: {{section.settings.tus_image_text_heading_c}};
+    font-family: FS_Emeric_medium;
+    font-size: 56px;
+    line-height: 66px;
+    letter-spacing: 0px;
+  }
+
+  .tus_image_text_data {
+    width: 100%;
+    display: flex;
+    align-items: center;
+  }
+
+  .tus_image_text_data_sd_{{section.id}} {
+    flex-direction: row-reverse;
+  }
+
+  .tus_image_text_image_{{section.id}} {
+    width: 50%;
+    padding: 0px 40px 0px 0px;
+  }
+
+  .tus_image_text_data_sd_{{section.id}} .tus_image_text_image_{{section.id}} {
+    padding: 0px 0px 0px 40px;
+  }
+
+  .tus_image_text_image_{{section.id}} img {
+    width: 100%;
+    display: block;
+    opacity: 0;
+  }
+
+  .tus_image_text_content_{{section.id}} {
+    width: 50%;
+    padding: 0px 0px 0px 40px;
+  }
+
+  .tus_image_text_data_sd_{{section.id}} .tus_image_text_content_{{section.id}} {
+    padding: 0px 40px 0px 0px;
+  }
+
+  .tus_image_text_ct_heading_{{section.id}} {
+    width: 100%;
+    padding: 10px 0px;
+  }
+
+  .tus_image_text_ct_heading_{{section.id}} h2 {
+    margin: 0px;
+    color: {{section.settings.tus_image_text_ct_heading_c}};
+    font-family: FS_Emeric_medium;
+    font-size: 56px;
+    line-height: 66px;
+    letter-spacing: 0px;
+  }
+
+  .tus_image_text_ct_text_{{section.id}} {
+    width: 100%;
+    padding: 5px 0px;
+  }
+
+  .tus_image_text_ct_text_{{section.id}} p {
+    margin: 0px;
+    color: {{section.settings.tus_image_text_ct_text_c}};
+    font-family: FS_Emeric_regular;
+    font-size: 24px;
+    line-height: 34px;
+    letter-spacing: 0px;
+    padding: 5px 0px 0px;
+  }
+
+  .tus_image_text_ct_text_{{section.id}} p a {
+    text-decoration: underline;
+    color: {{section.settings.tus_image_text_ct_text_c}};
+  }
+
+  .tus_image_text_ct_button_{{section.id}} {
+    width: 100%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 10px 0px;
+  }
+
+  .tus_image_text_ct_button_{{section.id}} a {
+    text-decoration: none;
+    color: {{section.settings.tus_image_text_ct_button_c}};
+    border: 3px solid {{section.settings.tus_image_text_ct_button_c}};
+    background-color: {{section.settings.tus_image_text_ct_button_bg}};
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px 20px;
+  }
+
+  .tus_image_text_ct_button_{{section.id}} span {
+    color: {{section.settings.tus_image_text_ct_button_c}};
+    font-family: var(--FS_Emeric_medium);
+    font-size: 20px;
+    line-height: 15px;
+    letter-spacing: 0px;
+  }
+
+  .tus_image_text_ct_button_{{section.id}} svg {
+    width: 26px;
+    height: 26px;
+    padding: 0px 0px 0px 10px;
+  }
+
+  .tus_image_text_ct_button_{{section.id}} i {
+    font-size: 16px;
+    padding: 0px 0px 0px 10px;
+  }
+
+  .tus_image_text_ct_button_{{section.id}} img {
+    display: block;
+    width: 26px;
+    padding: 0px 0px 0px 10px;
+  }
+
+  @media (max-width: 1024px){
+    .tus_image_text_heading_{{section.id}} h2 {
+      font-size: 28px;
+      line-height: 36px;
+    }
+
+    .tus_image_text_image_{{section.id}} {
+      padding: 0px 20px 0px 0px;
+    }
+
+    .tus_image_text_data_sd_{{section.id}} .tus_image_text_image_{{section.id}} {
+      padding: 0px 0px 0px 20px;
+    }
+
+    .tus_image_text_content_{{section.id}} {
+      padding: 0px 0px 0px 20px;
+    }
+
+    .tus_image_text_data_sd_{{section.id}} .tus_image_text_content_{{section.id}} {
+      padding: 0px 20px 0px 0px;
+    }
+
+    .tus_image_text_ct_heading_{{section.id}} h2 {
+      font-size: 28px;
+      line-height: 36px;
+    }
+
+    .tus_image_text_ct_text_{{section.id}} p {
+      font-size: 20px;
+      line-height: 28px;
+    }
+
+    .tus_image_text_ct_button_{{section.id}} a {
+      border: 2px solid {{section.settings.tus_image_text_ct_button_c}};
+      padding: 12px 15px;
+    }
+
+    .tus_image_text_ct_button_{{section.id}} span {
+      font-size: 16px;
+      line-height: 12px;
+    }
+
+    .tus_image_text_ct_button_{{section.id}} svg {
+      width: 26px;
+      height: 26px;
+      padding: 0px 0px 0px 10px;
+    }
+
+    .tus_image_text_ct_button_{{section.id}} i {
+      font-size: 16px;
+      padding: 0px 0px 0px 10px;
+    }
+
+    .tus_image_text_ct_button_{{section.id}} img {
+      display: block;
+      width: 26px;
+      padding: 0px 0px 0px 10px;
+    }
+  }
+
+  @media (max-width: 768px){
+    .tus_image_text_{{section.id}} {
+      padding: {{ section.settings.z_padding_top_mb }}px 10px {{section.settings.z_padding_bottom_mb}}px 10px;
+    }
+    
+ .tus_image_text_bg_{{section.id}} .tus_container
+  {
+    padding:0 !important;
+  }
+    .tus_image_text_ct_text_{{section.id}} p
+    {
+      font-size:20px;
+    }
+    .tus_image_text_subheading_{{section.id}} {
+      padding: 20px 0px 0px;
+    }
+
+    .tus_image_text_heading_{{section.id}} {
+      padding: 10px 0px;
+    }
+
+    .tus_image_text_data {
+      flex-wrap: wrap;
+    }
+
+    .tus_image_text_image_{{section.id}} {
+      width: 100%;
+      padding: 0px;
+    }
+
+    .tus_image_text_data_sd_{{section.id}} .tus_image_text_image_{{section.id}} {
+      padding: 0px;
+    }
+
+    .tus_image_text_content_{{section.id}} {
+      width: 100%;
+      padding: 20px 0px 0px;
+    }
+
+    .tus_image_text_data_sd_{{section.id}} .tus_image_text_content_{{section.id}} {
+      padding: 20px 0px 0px;
+    }
+  }
+
+</style>
+
+<div id="{{section.settings.tus-image-text}}">
+  <div class="tus_image_text_bg_{{section.id}}">
+    <div class="tus_container">
+      <div class="tus_image_text_{{ section.id }}">
+        {% if section.settings.tus_image_text_subheading != blank %}
+        <div class="tus_image_text_subheading_{{section.id}}">
+          <p>{{section.settings.tus_image_text_subheading}}</p>
+        </div>
+        {% endif %}
+        {% if section.settings.tus_image_text_heading != blank %}
+        <div class="tus_image_text_heading_{{section.id}}">
+          <h2>{{section.settings.tus_image_text_heading}}</h2>
+        </div>
+        {% endif %}
+        <div class="tus_image_text_data {% if section.settings.tus_image_text_data_sd != blank %}tus_image_text_data_sd_{{section.id}}{% endif %}">
+          {% if section.settings.tus_image_text_image != blank %}
+          <div class="tus_image_text_image_{{section.id}}">
+            <img src="{{section.settings.tus_image_text_image | img_url: "master"}}">
+          </div>
+          {% endif %}
+          <div class="tus_image_text_content_{{ section.id }}">
+            {% if section.settings.tus_image_text_ct_heading != blank %}
+            <div class="tus_image_text_ct_heading_{{section.id}}">
+              <h2>{{section.settings.tus_image_text_ct_heading}}</h2>
+            </div>
+            {% endif %}
+            {% if section.settings.tus_image_text_ct_text != blank %}
+            <div class="tus_image_text_ct_text_{{section.id}}">
+              {{section.settings.tus_image_text_ct_text}}
+            </div>
+            {% endif %}
+            {% if section.settings.tus_image_text_ct_button != blank %}
+            <div class="tus_image_text_ct_button_{{section.id}}">
+              <a href="{{section.settings.tus_image_text_ct_button_url}}">
+                <span>{{section.settings.tus_image_text_ct_button}}</span>
+                {% if section.settings.tus_image_text_ct_button_icon != blank and section.settings.tus_image_text_ct_button_img != blank %}
+                {{section.settings.tus_image_text_ct_button_icon}}
+                {% elsif section.settings.tus_image_text_ct_button_icon != blank and section.settings.tus_image_text_ct_button_img == blank %}
+                {{section.settings.tus_image_text_ct_button_icon}}
+                {% elsif section.settings.tus_image_text_ct_button_icon == blank and section.settings.tus_image_text_ct_button_img == blank %}
+                {{section.settings.tus_image_text_ct_button_icon}}
+                {% else section.settings.tus_image_text_ct_button_icon == blank and section.settings.tus_image_text_ct_button_img != blank %}
+                <img src="{{section.settings.tus_image_text_ct_button_img | img_url: "master"}}">
+                {% endif %}
+              </a>
+            </div>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  $(document).ready(function(){
+    setTimeout(function(){
+      $(".tus_image_text_image_{{section.id}} img").css("opacity","1");
+    }, 1000);
+  });
+  
+</script>
+
+{% schema %}
+  {
+    "name": "TUS Image Text",
+    "settings": [
+    {
+    "type": "text",
+    "id": "tus-image-text",
+    "label": "Section ID"
+    },
+    {
+    "type": "color",
+    "id": "tus_image_text_bg",
+    "label": "Background Color",
+    "default": "#E3F2F0"
+    },
+    {
+    "type": "textarea",
+    "id": "tus_image_text_subheading",
+    "label": "Sub Heading",
+    "default": "Sub heading on top"
+    },
+    {
+    "type": "color",
+    "id": "tus_image_text_subheading_c",
+    "label": "Sub Heading Color",
+    "default": "#000000"
+    },
+    {
+    "type": "textarea",
+    "id": "tus_image_text_heading",
+    "label": "Heading",
+    "default": "Heading on top"
+    },
+    {
+    "type": "color",
+    "id": "tus_image_text_heading_c",
+    "label": "Heading Color",
+    "default": "#000000"
+    },
+    {
+    "type": "checkbox",
+    "id": "tus_image_text_data_sd",
+    "label": "Swap Content Direction"
+    },
+    {
+    "type": "image_picker",
+    "id": "tus_image_text_image",
+    "label": "Content Image"
+    },
+    {
+    "type": "textarea",
+    "id": "tus_image_text_ct_heading",
+    "label": "Content Heading"
+    },
+    {
+    "type": "color",
+    "id": "tus_image_text_ct_heading_c",
+    "label": "Content Heading Color",
+    "default": "#000000"
+    },
+    {
+    "type": "richtext",
+    "id": "tus_image_text_ct_text",
+    "label": "Content Text"
+    },
+    {
+    "type": "color",
+    "id": "tus_image_text_ct_text_c",
+    "label": "Content Text Color",
+    "default": "#000000"
+    },
+    {
+    "type": "url",
+    "id": "tus_image_text_ct_button_url",
+    "label": "Button URL"
+    },
+    {
+    "type": "text",
+    "id": "tus_image_text_ct_button",
+    "label": "Button Text",
+    "default": "FIND OUT MORE"
+    },
+    {
+    "type": "color",
+    "id": "tus_image_text_ct_button_c",
+    "label": "Button Text Color",
+    "default": "#5CBCAE"
+    },
+    {
+    "type": "color",
+    "id": "tus_image_text_ct_button_bg",
+    "label": "Button Bg Color",
+    "default": "transparent"
+    },
+    {
+    "type": "textarea",
+    "id": "tus_image_text_ct_button_icon",
+    "label": "Button Arrow Icon"
+    },
+    {
+    "type": "image_picker",
+    "id": "tus_image_text_ct_button_img",
+    "label": "Button Arrow Image"
+    },
+    {
+    "type": "range",
+    "id": "z_padding_top",
+    "min": 0,
+    "max": 100,
+    "step": 1,
+    "unit": "px",
+    "label": "Padding top",
+    "default": 50
+    },
+       {
+    "type": "range",
+    "id": "z_padding_bottom",
+    "min": 0,
+    "max": 100,
+    "step": 1,
+    "unit": "px",
+    "label": "Padding bottom",
+    "default": 50
+    },
+     {
+    "type": "range",
+    "id": "z_padding_bottom_mb",
+    "min": 0,
+    "max": 100,
+    "step": 1,
+    "unit": "px",
+    "label": "Padding bottom(mobile",
+    "default": 16
+    },
+       {
+    "type": "range",
+    "id": "z_padding_top_mb",
+    "min": 0,
+    "max": 100,
+    "step": 1,
+    "unit": "px",
+    "label": "Padding top(mobile",
+    "default": 16
+    }
+
+    ],
+    "presets": [
+    {
+    "name": "TUS Image Text",
+    "category": "Office Work"
+    }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

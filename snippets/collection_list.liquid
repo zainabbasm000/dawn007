@@ -1,0 +1,24 @@
+   
+            <div class="tus_product_ct_data">
+              <a href="{{product.url}}">
+                <div class="tus_product_ct_img">
+                  <img src="{{product.images[0] | img_url: "master"}}">
+                  {% if product.tags contains 'new' %}
+                    <div class="tus_product_ct_status">New</div>
+                  {% endif %}
+                </div>
+                <div class="tus_product_ct_title">
+                  <h2>{{product.title}}</h2>
+                </div>
+                {% if product.available %}
+                  <div class="tus_product_ct_common tus_product_ct_prices">
+                    <p class="tus_product_ct_cprice">{{product.compare_at_price | money}}</p>
+                    <p class="tus_product_ct_common_text {% if product.compare_at_price == blank %}tus_product_ct_price{% endif %}">{{product.price | money}}</p>
+                  </div>
+                {% else %}
+                  <div class="tus_product_ct_common">
+                    <p class="tus_product_ct_common_text">Sold Out</p>
+                  </div>
+                {% endif %}
+              </a>
+            </div>

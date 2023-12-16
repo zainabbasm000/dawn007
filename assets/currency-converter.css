@@ -1,0 +1,56 @@
+.buckscc-currency-box .buckscc-currency-wrapper  .buckscc-select-styled {
+  background-color : transparent !important;
+  box-shadow: unset !important;
+}
+.buckscc-currency-box .buckscc-currency-wrapper  {
+  background-color : transparent !important;
+  box-shadow: unset !important;
+}
+.buckscc-currency-box {
+  padding-right: 50px;
+}
+.bucks-selected {
+  font-family : var(--FS_Emeric_regular);
+  border-bottom : 1px solid black;
+  font-size: 18px !important; 
+  
+}
+/* .buckscc-select-styled .flagWrapper:first-child {
+    padding: 2px 0;
+  padding-right:5px;
+  border-right: 2px solid black;
+
+} */
+.menu-drawer__localization  {
+  display:none;
+}
+@media (max-width:1200px)
+{
+  .buckscc-currency-box {
+    padding-right:20px;
+  }
+}
+@media (max-width:989px)
+{
+
+  .header__icons .buckscc-currency-box {
+    display:none !important;
+  }
+ .buckscc-currency-box .buckscc-select-options {
+    top:unset !important;
+    bottom:100% !important;
+    left:0 !important;
+  }
+  .menu-drawer__utility-links {
+    display:flex;
+    align-items:center;
+  }
+}
+@media (max-width:459px) {
+  
+.hxoSelectTheme.hxo-mobile_relative .buckscc-select-styled + .buckscc-select-options {
+     top:unset !important;
+    bottom:100% !important;
+    left:-50% !important;
+  }
+}

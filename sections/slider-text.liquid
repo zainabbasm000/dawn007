@@ -1,0 +1,170 @@
+<style>
+  .tus_bar_bg {
+    width: 100%;
+    background-color: {{section.settings.tus_bar_bg}};
+  }
+
+  .tus_bar {
+    width: 100%;
+    padding: 20px 0px;
+  }
+
+  .tus_bar_text {
+    text-align: center;
+    
+  }
+  .c_marquee{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .tus_bar_text p {
+    margin: 0px;
+    font-family: var(--FS_Emeric_regular);
+    font-size: 20px;
+    line-height: 20px;
+    letter-spacing: 0px;
+    position: relative;
+    padding: 0px 40px;
+  }
+
+  .tus_bar_text p::before {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    background-color: #1A1A1A;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+  }
+
+  @media (max-width: 768px){
+    .tus_bar_text p {
+      font-size: 16px;
+      line-height: 16px;
+    }
+  }
+  
+</style>
+
+<div id="tus-bar">
+  <div class="tus_bar_bg">
+    <div class="tus_bar">
+       <marquee width="100%" direction="left" infinite>  
+         <div class="c_marquee">   
+        {% for i in (1..200) %}
+      {% for block in section.blocks %}
+        {% if block.type == "bar_text" %}
+          {% if block.settings.tus_bar_text != blank %}
+            <div class="tus_bar_text">
+              <p style="color:{{block.settings.tus_bar_text_c}};">{{block.settings.tus_bar_text}}</p>
+            </div>
+    
+          {% endif %}
+        {% endif %}
+      {% endfor %}
+      {% endfor %}
+         </div>
+</marquee>
+    </div>
+  </div>
+</div>
+
+<script>
+  // $(".tus_bar").slick({
+  //   dots: false,
+  //   infinite: true,
+  //   arrows: false,
+  //   autoplay: true,
+  //   autoplaySpeed: 1,
+  //   speed: 6000,
+  //   cssEase: "linear",
+  //   waitForAnimate: false,
+  //   pauseOnFocus: false,
+  //   pauseOnHover: false,
+  //   slidesToShow: 5,
+  //   slidesToScroll: 1,
+  //   responsive: [
+  //     {
+  //       breakpoint: 1441,
+  //       settings: {
+  //         slidesToShow: 2,
+  //         slidesToScroll: 1
+  //       }
+  //     },
+  //     {
+  //       breakpoint: 490,
+  //       settings: {
+  //         slidesToShow: 1,
+  //         slidesToScroll: 1
+  //       }
+  //     }
+  //   ]
+  // });
+        var swiper = new Swiper(".tus_bar", {
+          slidesPerView: auto,
+        centeredSlides: true,
+        autoplay: {
+          delay: 2500,
+          disableOnInteraction: false,
+        },
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+        },
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+      });
+</script>
+
+{% schema %}
+  {
+    "name": "TUS Bar",
+    "settings": [
+    {
+    "type": "color",
+    "id": "tus_bar_bg",
+    "label": "Background Color",
+    "default": "#5CBCAE"
+    }
+    ],
+    "blocks": [
+    {
+    "type": "bar_text",
+    "name": "Bar Text",
+    "settings": [
+    {
+    "type": "text",
+    "id": "tus_bar_text",
+    "label": "Text",
+    "default": "30 DAYS RETURNS & EXCHANGES"
+    },
+    {
+    "type": "color",
+    "id": "tus_bar_text_c",
+    "label": "Text Color",
+    "default": "#1A1A1A"
+    }
+    ]
+    }
+    ],
+    "presets": [
+    {
+    "name": "TUS Bar",
+    "category": "Office Work"
+    }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

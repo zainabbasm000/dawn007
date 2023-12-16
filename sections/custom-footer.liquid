@@ -1,0 +1,595 @@
+<div class="z_custom-footer">
+    <div class="z_custom_footer_inner">
+      <div class="tus_container">
+        {% if section.settings.z_logo_img_foo != blank %}
+<div class="z_logo_img_foo_log">
+  <img src="{{ section.settings.z_logo_img_foo | img_url : 'master' }}"   />
+</div>
+        {% endif %}
+        <div class="ab_parent_w_suit">
+        <div class="ab_foot_navigations">
+<div class="ab_nav_parent"> 
+{% for block in section.blocks %}
+{% if block.type == "foot_nav" %}        
+<div class="ab_nav_child">
+{% if block.settings.f_menu_head != blank %}
+<h3> {{ block.settings.f_menu_head }} </h3>
+{% endif %}
+<ul class="ab_foot_nav">
+{% for link in linklists[block.settings.foot_menu ].links %}
+<li class="ab_foot_list_nav">
+<a class="ab_foot_link_nav" href= "{{ link.url }}">{{ link.title }}
+</a>
+</li>
+{% endfor %}
+</ul>
+</div>
+{% endif %}
+{% endfor %}
+</div>
+</div>
+<div class="ab_foot_newsletter">
+<div class="z_footer_inner_news">
+{% if section.settings.f_news_head != blank %}
+<h3> {{ section.settings.f_news_head }} </h3>
+{% endif %}
+{% if section.settings.f_news_sub_head != blank %}
+<p> {{ section.settings.f_news_sub_head }} </p>
+{% endif %}
+<div class="ab_f_news_form">
+
+{% form 'customer', class: 'ab_newsletter-form' %}
+<input type="hidden" name="contact[tags]" value="newsletter">
+<div
+class=""
+
+>
+<div class="z_field">
+<input
+id="NewsletterForm--{{ section.id }}"
+type="email"
+name="contact[email]"
+class="z_field__input"
+value="{{ form.email }}"
+aria-required="true"
+autocorrect="off"
+autocapitalize="off"
+autocomplete="email"
+{% if form.errors %}
+autofocus
+aria-invalid="true"
+aria-describedby="Newsletter-error--{{ section.id }}"
+{% elsif form.posted_successfully? %}
+aria-describedby="Newsletter-success--{{ section.id }}"
+{% endif %}
+placeholder="Enter your email"
+required
+>
+<label class="field__label" for="NewsletterForm--{{ section.id }}">
+{{ 'newsletter.label' | t }}
+</label>
+<button
+type="submit"
+class="newsletter-form__button z_field__button"
+name="commit"
+id="Subscribe"
+aria-label="{{ 'newsletter.button_label' | t }}"
+>
+Subscribe
+</button>
+</div>
+{%- if form.errors -%}
+<small class="newsletter-form__message form__message" id="Newsletter-error--{{ section.id }}">
+{%- render 'icon-error' -%}
+{{- form.errors.translated_fields.email | capitalize }}
+{{ form.errors.messages.email -}}
+</small>
+{%- endif -%}
+</div>
+{%- if form.posted_successfully? -%}
+<h3
+class="newsletter-form__message newsletter-form__message--success form__message"
+id="Newsletter-success--{{ section.id }}"
+tabindex="-1"
+autofocus
+>
+{% render 'icon-success' -%}
+{{- 'newsletter.success' | t }}
+</h3>
+{%- endif -%}
+{% endform %}
+
+</div>
+</div>
+</div>
+        </div>
+        <div class="z_foo_chk_soci">
+          <div class="z_foo_chk_inn">
+          <div class="z_foo_check_methods">
+            <p class="z_chkout_head">
+              {{ section.settings.z_chk_heading }}
+            </p>
+            <div class="z_checkout_method_img">
+              {%- for block in section.blocks -%}
+              {%- if block.type == 'Checkout' -%}
+                {%- if block.settings.z_chk_method_img != blank -%}
+                  <img src="{{ block.settings.z_chk_method_img | img_url : 'master'}}" class="z_method_img" />
+              {%- endif -%}
+              {%- endif -%}
+              {%- endfor -%}
+            </div>
+          </div>
+            <div class="z_foo_social_methods">
+            <p class="z_social_head">
+              {{ section.settings.z_social_heading }}
+            </p>
+            <div class="z_social_img">
+              {%- for block in section.blocks -%}
+              {%- if block.type == 'Social' -%}
+                {%- if block.settings.z_chk_method_img != blank -%}
+                  <a href="{{ block.settings.z_url }}"  class="z_social_icons_url" >
+                  <img src="{{ block.settings.z_chk_method_img | img_url : 'master'}}" class="z_method_img" />
+                    </a>
+              {%- endif -%}
+              {%- endif -%}
+              {%- endfor -%}
+            </div>
+          </div>
+          </div>
+
+ <div class="z_cotact_foo_sec">
+              {{ section.settings.z_cotact_foo_sec }}
+            </div>
+          
+          
+        </div>
+      </div>
+    </div>
+</div>
+
+<style>
+      .z_custom_footer_inner {
+      background-color : {{ section.settings.z_bg_clr }} ; 
+      }
+      .z_cotact_foo_sec p , .z_cotact_foo_sec a {
+      font-family : var(--future_pt);
+      margin:0;
+      font-size:16px;
+      color: black;
+      }
+      .z_cotact_foo_sec {
+      max-width: 550px;
+      margin: 0 auto;
+      padding: 50px 0 30px 0;
+      text-align:center;
+      }
+      p.z_social_head {
+      font-family: var(--future_pt);
+      font-size: 16px;
+      text-align: center;
+      color: black;
+      margin: 0;
+      line-height: normal;
+      padding-bottom: 10px;
+      padding-top: 10px;
+      }
+      .z_social_icons_url {
+      margin-right:30px;
+      line-height: 0;
+      display: inline-block;
+      }
+      .z_social_img {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-bottom: 2px solid #172F2B;
+      padding-bottom: 8px;
+      }
+      p.z_chkout_head {
+      font-family: var(--future_pt);
+      font-size: 16px;
+      text-align: center;
+      color: black;
+      margin: 0;
+      line-height: normal;
+      padding-bottom: 10px;
+      }
+      .z_method_img:last-child {
+      margin:0;
+      }
+      .z_method_img {
+      margin-right:5px;
+      }
+      .z_foo_chk_inn {
+      max-width: 310px;
+      margin: 0 auto;
+      padding-top: 25px;
+      }
+      .z_foo_check_methods {
+      text-align: center;
+      }
+      .z_checkout_method_img {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding-bottom: 8px;
+      border-bottom: 2px solid #172F2B;
+      }
+      .tus_container {
+      max-width: 1400px;
+      margin: 0px auto;
+      }
+      .ab_nav_parent {
+      padding : 20px 0;
+      
+      }
+      .z_logo_img_foo_log {
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding: 20px 0px 25px 0;
+      }
+      .z_logo_img_foo_log img{
+      display:block;
+      width:160;
+      height:161px;
+      }
+      .z_field {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      }
+      .ab_parent_w_suit{
+      display:flex;
+      flex-wrap:wrap; 
+      border-top: 2px solid #39756D;
+      }
+      .ab_wed_f_logo{
+      width:20%;
+      padding: 0 30px 0 0;
+      }
+      .ab_foot_navigations{
+      width:55%;
+      padding: 0 20px 0 40px;
+      border-right: 2px solid #39756D;
+      }
+      .ab_nav_child{
+      width:33.33%;
+      }
+      .ab_foot_newsletter {
+      width: 45%;
+      padding: 20px 20px 20px 30px;
+      text-align: center;
+      }
+      .ab_nav_parent{
+      display:flex;
+      flex-wrap:wrap;
+      }
+      .z_field__input:focus-visible {
+      outline: unset;
+      outline-offset: unset;
+      box-shadow: unset;
+      }
+      .ab_wed_f_logo img{
+      width:100%;
+      display:block;
+      }
+      .ab_foot_socials_parent{
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:center;
+      padding:10px 0 0 0;
+      }
+      .foot_social_child{
+      display:block;
+      text-decoration:none;
+      margin:0 3px 0 0;
+      }
+      .foot_social_child svg{
+      fill:{{ section.settings.social_svg_color }};
+      width: 30px;
+      height: 30px;
+      }
+      .foot_social_child svg path{
+      fill:{{ section.settings.social_svg_color }};
+      }
+      .ab_foot_nav{
+      padding: 0px 0 0 0;
+      margin:0;
+      }
+      .ab_foot_list_nav{
+      list-style:none;
+      padding: 0 0 4px 0;
+      }
+      .ab_foot_link_nav{
+      text-decoration:none;
+      color:{{ section.settings.f_txt_color }};
+      font-family: var(--FS_Emeric_regular);
+      font-size: 14px;
+      text-transform: capitalize;
+      }
+      .ab_nav_parent h3{
+      margin: 0 0 15px 0;
+      color: black;
+      font-family: var(--FS_Emeric_extra_bold);
+      font-size: 14px;
+      text-transform: uppercase;
+      }
+      .ab_foot_newsletter h3{
+      margin:0 0 20px 0;
+      color:{{ section.settings.f_txt_color }};
+      font-family: var(--FS_Emeric_extra_bold);
+      font-size: 24px;
+      
+      }
+      .ab_foot_newsletter p{
+      margin:0 0 0px 0;
+      color:{{ section.settings.f_txt_color }};
+      font-size: 18px;
+      width:100%;
+      font-family: var(--FS_Emeric_medium);
+      max-width: 300px;
+      margin: 0 auto;
+      line-height: normal;
+      }
+      .ab_f_news_form {
+      width:100%;
+      padding-top: 40px;
+      }
+      .ab_f_news_form label{
+      display:none;
+      }
+      .ab_f_news_form .field{
+      border: 2px solid #E5DFD5;
+      margin: 20px 0 0 0;
+      }
+      .z_footer_inner_news {
+      max-width: 450px;
+      margin: 0 auto;
+      }
+      .ab_f_news_form input{
+      width: 75%;
+      color:{{ section.settings.f_txt_color }} !important;
+      font-size: 13px !IMPORTANT;
+      height: 44px;
+      padding: 0 10px !IMPORTANT;
+      margin-right:20px;
+      background-color:white;
+      border: 2px solid #606060;
+      }
+      .ab_f_news_form input::placeholder  {
+      color:{{ section.settings.f_txt_color }} !important;
+      }
+      .ab_f_news_form button{
+      width: 25%;
+      color:white;
+      font-size: 14px !IMPORTANT;
+      height: 44px;
+      background: black;
+      }
+      .ab_f_news_form .newsletter-form__message{
+      margin: 10px 0 0 0;
+      font-size: 14px;
+      }
+  .z_social_icons_url:last-child {
+margin:0;
+              }
+        @media(max-width:1200px){
+            .ab_f_news_form button {
+            font-size: 12px !IMPORTANT;
+            }
+            .ab_nav_parent h3 {
+            font-size: 13px;
+            }
+            }
+        @media(max-width:1024px){
+            .ab_parent_w_suit {
+            padding: 0 0 20px 0;
+            }
+            .ab_nav_parent {
+            padding:10px 0;
+            }
+            .ab_parent_w_suit {
+            flex-direction: column-reverse;
+            }
+            .ab_f_news_form button {
+            font-size: 12px !IMPORTANT;
+            }
+            .ab_f_news_form button {
+            width: 25%;
+            }
+            .ab_f_news_form input {
+            width: 75%;
+            }
+            .ab_nav_parent h3 {
+            margin: 0 0 20px 0;
+            }
+            .ab_foot_newsletter h3 {
+            margin: 0 0 20px 0;
+            }
+            .ab_foot_newsletter {
+            width: 100%;
+            padding: 20px 15px 30px 15px;
+            border-bottom: 2px solid black;
+            }
+            .ab_foot_navigations {
+            width: 100%;
+            padding:0;
+            border-right: 0;
+            }
+            }
+        @media(max-width:768px){
+            .ab_big_wedding_suits {
+            padding: 40px 20px;
+            }
+            .z_cotact_foo_sec {
+            padding-top:40px;
+            }
+            .z_foo_chk_inn {
+            padding-top: 10px;
+            }
+            .ab_foot_newsletter h3 {
+            font-size:20px;
+            }
+            .ab_foot_newsletter p {
+            font-size:14px;
+            }
+            .ab_f_news_form {
+            padding-top: 15px;
+            }
+            .z_cotact_foo_sec p, .z_cotact_foo_sec a {
+            font-size:14px;
+            }
+            .z_logo_img_foo_log {
+            padding: 20px 0px 20px 0;
+            }
+            .ab_f_news_form input {
+            margin-right:14px;
+            }
+            .ab_nav_child {
+            padding: 10px 0 0 10px;
+            }
+            .ab_foot_navigations {
+            width: 100%;
+            padding:0;
+            }
+            .ab_wed_f_logo {
+            width: 100%;
+            padding: 0;
+            max-width: 400px;
+            margin: 0 auto;
+            }
+            .ab_parent_w_suit {
+            padding: 0 0 0px 0;
+            }
+            p.z_social_head , p.z_chkout_head{
+            font-size: 14px;
+            }
+            }
+        @media (max-width:450px){
+              .z_foo_chk_inn {
+              max-width:240px;
+              }
+              .z_method_img {
+              width: 30px; 
+              }
+              }
+
+</style>
+{% schema %}
+  {
+    "name": "Footer",
+    "settings": [
+      {
+        "type" : "color",
+        "id" : "z_bg_clr",
+        "label" : "Background color",
+        "default" : "#5CBCAE"
+      },
+      {
+        "type" : "image_picker",
+        "id" : "z_logo_img_foo",
+        "label" : "Enter logo"
+      },
+      {
+"type":"color",
+"id":"social_svg_color",
+"label":"Social Svg color" 
+},
+{
+"type":"color",
+"id":"f_txt_color",
+"label":"Text color",
+"default":"#E5DFD5"  
+},
+{
+"type": "text",
+"id": "f_news_head",
+"label": "NewsLetter Heading",
+"default":"Join 1000+ King’s Students"    
+},
+{
+"type": "textarea",
+"id": "f_news_sub_head",
+"label": "NewsLetter Description",
+"default":"Sign up to recieve exclusive news, updates, deals, and more"    
+},
+      {
+        "type": "text",
+"id": "z_chk_heading",
+"label": "Checkout Heading",
+"default":"Guaranteed Safe Checkout" 
+      },
+        {
+        "type": "text",
+"id": "z_social_heading",
+"label": "Social Heading",
+"default":"Follow Us on Social Media!" 
+      },
+  {
+            "type": "richtext",
+"id": "z_cotact_foo_sec",
+"label": "Contact footer"
+  }
+    ],
+    "blocks": [
+{
+"type": "foot_nav",
+"name": "Select menu",
+"settings": [
+{
+"type": "text",
+"id": "f_menu_head",
+"label": "Heading"
+},  
+{
+"type": "link_list",
+"id": "foot_menu",
+"label": "Select menu"
+} 
+]
+},
+      {
+        "type" : "Checkout",
+        "name" : "checkout methods",
+        "settings" : [
+          
+            {
+            "type" : "image_picker",
+            "id" : "z_chk_method_img",
+            "label" : "Checkout methods"
+          }
+        ]
+      },
+       {
+        "type" : "Social",
+        "name" : "Social icons",
+        "settings" : [
+          
+            {
+            "type" : "image_picker",
+            "id" : "z_chk_method_img",
+            "label" : "Image"
+          },
+  {
+    "type" : "url",
+            "id" : "z_url",
+            "label" : "Url"
+  }
+        ]
+      }
+],
+    "presets" : [
+      {
+        "name" : "Footer",
+        "category" : "select"
+      }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

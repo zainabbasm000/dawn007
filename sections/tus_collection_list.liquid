@@ -1,0 +1,384 @@
+<style>
+  .tus_products_bg_{{section.id}} {
+    width: 100%;
+    background-color : {{section.settings.tus_products_bg}};
+  }
+
+  .tus_products {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 50px 0px;
+  }
+  #tus-products .tus_container {
+    padding:0 !important;
+  }
+  .tus_products_heading_{{section.id}} {
+    width: 50%;
+    text-align: start;
+    padding: 0px 20px;
+  }
+
+  .tus_products_heading_{{section.id}} h2 {
+    margin: 0px;
+    color: {{section.settings.tus_products_heading_c}};
+    font-family: Arial_Medium;
+    font-size: 36px;
+    line-height: 36px;
+  }
+
+  .tus_products_button_{{section.id}} {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 0px 20px;
+  }
+
+  .tus_products_button_{{section.id}} a {
+    text-decoration: none;
+    color: {{section.settings.tus_products_button_c}};
+    border: 3px solid {{section.settings.tus_products_button_c}};
+    background-color: {{section.settings.tus_products_button_bg}};
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 2px 12px 0px #0000001F;
+    padding: 15px 30px;
+  }
+
+  .tus_products_button_{{section.id}} span {
+    color: {{section.settings.tus_products_button_c}};
+    font-family: var(--FS_Emeric_medium);
+    font-size: 20px;
+    line-height: 15px;
+    letter-spacing: 0px;
+  }
+
+  .tus_products_button_{{section.id}} img {
+    display: block;
+    width: 26px;
+    padding: 0px 0px 0px 10px;
+  }
+
+  .tus_products_content_{{section.id}} {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 10px 10px 0px;
+  }
+
+  .tus_product_ct_data {
+    width: 25%;
+    padding: 30px 10px 0px;
+  }
+
+  .tus_product_ct_data a {
+    text-decoration: none;
+  }
+
+  .tus_product_ct_img {
+    width: 100%;
+    position: relative;
+  }
+
+  .tus_product_ct_img img {
+    display: block;
+    width: 100%;
+  }
+
+  .tus_product_ct_status {
+    width: max-content;
+    position: absolute;
+    z-index: 1;
+    top: 10px;
+    left: 10px;
+    color: #1A1A1A;
+    background-color: #E3F2F0;
+    font-size: 11px;
+    line-height: 11px;
+    border-radius: 30px;
+    padding: 5px 15px;
+    font-family : var(--Avenir_Next);
+  }
+
+  .tus_product_ct_title {
+    width: 100%;
+    text-align: start;
+    padding: 10px 0px 0px;
+  }
+
+  .tus_product_ct_title h2 {
+    margin: 0px;
+    font-family: Arial_Medium;
+    color: #1A1A1A;
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: 0px;
+  }
+
+  .tus_product_ct_common {
+    width: 100%;
+    text-align: start;
+    padding: 5px 0px 0px;
+  }
+
+  .tus_product_ct_common p {
+    margin: 0px;
+    font-family: Arial_Medium;
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: 0px;
+  }
+
+  .tus_product_ct_common_text {
+    color: #EB001B;
+  }
+
+  .tus_product_ct_prices {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  .tus_product_ct_cprice {
+    text-decoration: line-through;
+    color: #979797;
+    padding: 0px 7px 0px 0px;
+  }
+
+  .tus_product_ct_price {
+    color: #1A1A1A;
+  }
+
+  @media (max-width: 1024px){
+    .tus_products_heading_{{section.id}} h2 {
+      font-size: 28px;
+      line-height: 28px;
+    }
+
+    .tus_products_button_{{section.id}} span {
+      font-size: 16px;
+      line-height: 11px;
+    }
+
+    .tus_products_button_{{section.id}} img {
+      width: 21px;
+      padding: 0px 0px 0px 7px;
+    }
+
+    .tus_product_ct_data {
+      padding: 20px 10px 0px;
+    }
+  }
+
+  @media (max-width: 768px){
+    .tus_products {
+      padding: 30px 0px;
+    }
+
+    .tus_products_heading_{{section.id}} {
+      width: 100%;
+      order: 1;
+      padding: 0px 10px;
+    }
+
+    .tus_products_content_{{section.id}} {
+      flex-wrap: wrap;
+      order: 2;
+      padding: 0px;
+    }
+
+    .tus_product_ct_data {
+      width: 50%;
+      padding: 30px 10px 0px;
+    }
+
+    .tus_products_button_{{section.id}} {
+      width: 100%;
+      justify-content: center;
+      order: 3;
+      padding: 30px 10px 0px;
+      {% if section.settings.z_btn_button_hide %}
+display:none;
+      {% endif %}
+    }
+
+    .tus_products_content_tab_slider_{{section.id}} .slick-dots {
+      width: 100%;
+      list-style-type: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0px;
+      padding: 30px 0px 0px;
+    }
+
+    .tus_products_content_tab_slider_{{section.id}} .slick-dots li {
+      background-color: #CACACA;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      margin: 0px 5px;
+    }
+
+    .tus_products_content_tab_slider_{{section.id}} .slick-dots li.slick-active {
+      background-color: #000000;
+    }
+
+    .tus_products_content_tab_slider_{{section.id}} .slick-dots li button {
+      display: none;
+    }
+  }
+
+</style>
+
+<div id="tus-products">
+  <div class="tus_products_bg_{{section.id}}">
+    <div class="tus_container">
+      <div class="tus_products">
+        {% if section.settings.tus_products_heading != blank %}
+          <div class="tus_products_heading_{{section.id}}">
+            <h2>{{section.settings.tus_products_heading}}</h2>
+          </div>
+        {% endif %}
+        {% if section.settings.tus_products_button != blank %}
+          <div class="tus_products_button_{{section.id}}">
+            <a href="{{section.settings.tus_products_button_url}}">
+              <span>{{section.settings.tus_products_button}}</span>
+              {% if section.settings.tus_products_button_img != blank %}
+                <img src="{{section.settings.tus_products_button_img | img_url: "master"}}">
+              {% endif %}
+            </a>
+          </div>
+        {% endif %}
+        <div class="tus_products_content_{{section.id}} {% if section.settings.tus_products_content_tab_slider != blank %}tus_products_content_tab_slider_{{section.id}}{% endif %}">
+          {% for product in collections[section.settings.tus_products_content].products limit: section.settings.tus_products_content_r %}
+          {% render 'collection_list' , product : product %}
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+
+  if (screen.width < 769){
+    $(".tus_products_content_tab_slider_{{section.id}}").slick({
+      dots: true,
+      arrows: false,
+      infinite: true,
+      speed: 300,
+      slidesToShow: 2,
+      slidesToScroll: 1,
+      responsive: [
+        {
+          breakpoint: 769,
+          settings: {
+            slidesToShow: 2,
+            slidesToScroll: 1
+          }
+        },
+        {
+          breakpoint: 491,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1
+          }
+        }
+      ]
+    });
+  }
+  
+</script>
+
+{% schema %}
+  {
+    "name": "TUS Products",
+    "settings": [
+    {
+    "type": "color",
+    "id": "tus_products_bg",
+    "label": "Background Color",
+    "default": "transparent"
+    },
+    {
+    "type": "text",
+    "id": "tus_products_heading",
+    "label": "Heading",
+    "default": "Our Best Sellers"
+    },
+    {
+    "type": "color",
+    "id": "tus_products_heading_c",
+    "label": "Heading Color",
+    "default": "#000000"
+    },
+    {
+    "type": "url",
+    "id": "tus_products_button_url",
+    "label": "Button URL"
+    },
+    {
+    "type": "text",
+    "id": "tus_products_button",
+    "label": "Button Text",
+    "default": "BROWSE ALL"
+    },
+    {
+    "type": "color",
+    "id": "tus_products_button_c",
+    "label": "Button Text Color",
+    "default": "#5CBCAE"
+    },
+    {
+    "type": "color",
+    "id": "tus_products_button_bg",
+    "label": "Button Bg Color",
+    "default": "transparent"
+    },
+    {
+    "type": "image_picker",
+    "id": "tus_products_button_img",
+    "label": "Button Icon"
+    },
+    {
+    "type": "collection",
+    "id": "tus_products_content",
+    "label": "Collection"
+    },
+    {
+    "type": "range",
+    "id": "tus_products_content_r",
+    "label": "Number of Products",
+    "min": 1,
+    "max": 4,
+    "default": 4
+    },
+    {
+    "type": "checkbox",
+    "id": "tus_products_content_tab_slider",
+    "label": "Active Slider on Tab"
+    },
+            {
+         "type": "checkbox",
+    "id": "z_btn_button_hide",
+    "label": "Button hide (mobile)"
+      }
+    ],
+    "presets": [
+    {
+    "name": "TUS Products",
+    "category": "Office Work"
+    }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

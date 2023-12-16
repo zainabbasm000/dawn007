@@ -1,0 +1,225 @@
+<div class="z_instagram_feer">
+  <div class="z_padd">
+<div class="tus_container">
+  <div class="z_heading_sec">
+    {% if section.settings.z_heading_txt != empty %}
+    <h2 class="z_heading_txt">
+      {{ section.settings.z_heading_txt }}
+    </h2>
+      {% endif %}
+
+    {% if section.settings.z_subheading_txt != empty %}
+<h2 class="z_subheading_txt"> {{ section.settings.z_subheading_txt }}</h2>
+    {% endif %}
+  </div>
+ <div id="instafeed-instagram-feed" data-type="FEEDS"></div>
+  </div>
+  </div>
+  </div>
+ <style>
+   
+     .z_instagram_feer .tus_container {
+padding:0 10px !important;
+        overflow:hidden;
+      }
+
+      
+      .z_instagram_feer .my-col-setup  {
+        max-width:100%;
+        padding:0;
+      }
+   
+      .z_instagram_feer {
+        background-color: {{section.settings.z_insta_bg}};
+      }
+   
+      .z_heading_sec {
+        text-align:center;
+      
+      }
+   
+      .z_heading_txt p{
+        font-family: arail;
+        font-size:24px;
+        margin:0;
+        line-height:1;
+      }
+      .z_heading_txt strong {
+        font-size:36px;
+        padding-bottom: 5px;
+    display: inline-block;
+      }
+   
+      .z_padd {
+        padding-top: {{ section.settings.z_padding_top }}px;
+        padding-bottom: {{ section.settings.z_padding_bottom }}px;
+      }
+      .z_heading_txt {
+        margin:0;
+        margin-bottom:30px;
+      }
+   .insta-feed-img {
+     display:block;
+   }
+      @media (max-width:768px)
+        {
+          .z_padd .my-col-setup {
+            flex-wrap: unset;
+            justify-content: unset;
+          
+          }
+          
+          .instafeeds-container {
+            overflow:visible;
+            padding: 0 40px;
+          }
+          .my-col-setup .column-4 {
+            margin:0;
+            margin-inline: 0;
+          }
+          .z_padd {
+            padding-top: {{ section.settings.z_padding_top_mb }}px;
+            padding-bottom: {{ section.settings.z_padding_bottom_mb }}px;
+          }
+          .z_heading_txt {
+            margin:0;
+            margin-bottom:20px;
+          }
+          .z_heading_txt p{
+        font-size:16px;
+      }
+      .z_heading_txt strong {
+        font-size:24px;
+      }
+      }
+ </style>
+ <script>
+   $(function(){
+
+    
+     
+var swiper;
+     if($(window).width() <= 768 )
+{
+
+setTimeout(function() {
+  $(".instafeeds-container").addClass("swiper"); 
+$(".my-col-setup ").addClass("swiper-wrapper");
+$(".column-4").addClass("swiper-slide");
+  setTimeout(function() {
+swiper = new Swiper(".z_instagram_feer .swiper", {
+slidesPerView: 1,
+  spaceBetween : 20,
+  centeredSlides: true,
+  loop:true,
+});
+    }, 500)
+}, 2000)
+
+}
+
+
+$(window).resize(function() {
+if($(window).width() <= 768 )
+{
+
+  $(".instafeeds-container").addClass("swiper"); 
+$(".my-col-setup").addClass("swiper-wrapper");
+$(".column-4").addClass("swiper-slide");
+  setTimeout(function() {
+swiper = new Swiper(".z_instagram_feer .swiper", {
+slidesPerView: 1,
+  spaceBetween : 20,
+  centeredSlides: true,
+  loop:true,
+});
+    }, 500)
+
+
+}
+else {
+$(".instafeeds-container").removeClass("swiper"); 
+$(".my-col-setup").removeClass("swiper-wrapper");
+$(".column-4").removeClass("swiper-slide");
+}
+})
+   })
+ </script>
+{% schema %}
+  {
+    "name": "Instagram",
+    "settings": [
+      {
+        "type" : "color",
+        "id" : "z_insta_bg",
+        "label" : "Background color",
+        "default" : "#fff"
+      },
+      {
+        "type" : "richtext",
+        "id" : "z_heading_txt",
+        "label" : "Heading"
+      },
+      {
+        "type" : "text",
+        "id" : "z_subheading_txt",
+        "label" : "Sub heading",
+        "default" : "On instagram"
+      },
+      {
+          "type": "range",
+          "id": "z_padding_top",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "px",
+          "label": "Padding top",
+          "default": 30
+        }
+        ,
+              {
+          "type": "range",
+          "id": "z_padding_bottom",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "px",
+          "label": "Padding bottom",
+          "default": 50
+        }
+        ,
+                    {
+          "type": "range",
+          "id": "z_padding_bottom_mb",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "px",
+          "label": "Padding bottom mobile",
+          "default": 20
+        },
+                    {
+          "type": "range",
+          "id": "z_padding_top_mb",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "px",
+          "label": "Padding top mobile",
+          "default": 30
+        }
+    ],
+    "presets" : [
+      {
+        "name" : "Instagram",
+        "category" : "office work"
+      }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}
